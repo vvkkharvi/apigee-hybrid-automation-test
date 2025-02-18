@@ -1,7 +1,8 @@
 name: Setup Apigee Hybrid Dependencies
 
 on:
-  push:
+ workflow_dispatch:
+
 
 jobs:
   Install-Pre-requisite:
@@ -57,6 +58,22 @@ jobs:
       - name: Install Ansible
         run: |
           python3 -m pip install --user ansible
+
+      - name: Verify Installed Versions
+        run: |
+          echo "Git Version: $(git --version)"
+          echo "Docker Version: $(docker --version)"
+          echo "AWS CLI Version: $(aws --version)"
+          echo "Google Cloud SDK Version: $(gcloud --version)"
+          echo "kubectl Version: $(kubectl version --client --short)"
+          echo "eksctl Version: $(eksctl version)"
+          echo "Helm Version: $(helm version --short)"
+          echo "Terraform Version: $(terraform version)"
+          echo "Ansible Version: $(ansible --version | head -n1)"
+          echo "Telnet Version: $(telnet -version || echo 'Telnet installed')"
+          echo "cURL Version: $(curl --version | head -n1)"
+          echo "Python3 Version: $(python3 --version)"
+
 
 
 
