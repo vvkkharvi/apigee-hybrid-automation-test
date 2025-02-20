@@ -1,0 +1,45 @@
+name: Terraform Deployment
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Terraform-Deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore Cached Packages
+        uses: actions/cache@v3
+        with:
+          path: /usr/local/bin
+          key: dependencies-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            dependencies-${{ runner.os }}-
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate with GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Initialize Terraform
+        run: |
+          cd terraform/management-plane
+          terraform init
+
+      - name: Validate Terraform Configuration
+        run: |
+          cd terraform/management-plane
+          terraform validate
+
+      - name: Plan Terraform Deployment
+        run: |
+          cd terraform/management-plane
+          terraform plan -var-file=terraform.tfvars
+
+      - name: Apply Terraform Changes
+        run: |
+          cd terraform/management-plane
+          terraform apply -auto-approve -var-file=terraform.tfvars
+
