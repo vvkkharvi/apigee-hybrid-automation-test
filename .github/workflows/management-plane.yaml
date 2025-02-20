@@ -25,21 +25,21 @@ jobs:
 
       - name: Initialize Terraform
         run: |
-          cd terraform/management-plane
+          cd terraform-management-plane
           terraform init
 
       - name: Validate Terraform Configuration
         run: |
-          cd terraform/management-plane
+          cd terraform-management-plane
           terraform validate
 
       - name: Plan Terraform Deployment
         run: |
-          cd terraform/management-plane
+          cd terraform-management-plane
           terraform plan -var-file=terraform.tfvars
 
       - name: Apply Terraform Changes
         run: |
-          cd terraform/management-plane
+          cd terraform-management-plane
           terraform apply -auto-approve -var-file=terraform.tfvars
 
