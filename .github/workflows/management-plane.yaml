@@ -1,4 +1,4 @@
-name: Terraform Deployment
+name: Management Plane Creation
 
 on:
   workflow_dispatch:
