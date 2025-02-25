@@ -40,7 +40,7 @@ jobs:
           cd terraform-eks-cluster
           terraform plan 
 
-      - name: Apply Terraform Changes
-        run: |
-          cd terraform-eks-cluster
-          terraform apply -auto-approve 
+      # - name: Apply Terraform Changes
+      #   run: |
+      #     cd terraform-eks-cluster
+      #     terraform apply -auto-approve 
