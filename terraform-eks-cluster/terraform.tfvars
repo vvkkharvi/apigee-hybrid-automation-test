@@ -29,6 +29,7 @@ tags = {
   Application = "VirtualOffice"
 }
 
+#add ons
 vpc_cni_name    = "vpc-cni"
 vpc_cni_version = "v1.19.0-eksbuild.1"
 
