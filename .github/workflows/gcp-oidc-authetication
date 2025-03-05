@@ -1,5 +1,4 @@
-name: Management Plane Creation
-
+name: GCP OIDC Authentication
 on:
   workflow_dispatch:
 
