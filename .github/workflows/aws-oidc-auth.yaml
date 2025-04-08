@@ -1,6 +1,9 @@
 name: AWS OIDC Authentication
 on:
-  workflow_dispatch:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:
+      - pre-requisite
 
 permissions:
   id-token: write  # Required for OIDC authentication
