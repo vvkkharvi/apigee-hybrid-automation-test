@@ -7,25 +7,25 @@ ingress_cidr_blocks        = ["0.0.0.0/0"]
 egress_cidr_blocks         = ["0.0.0.0/0"]
 
 #eks cluster
-cluster_name = "hl-apigee-hybrid-prod-dr-cluster"
-vpc_id       = "vpc-06d885987f3e966bc"
+cluster_name = "eks-cluster-name"
+vpc_id       = "vpc-id"
 
 subnet_ids = [
-  "subnet-06cbaee4f582689cb",
-  "subnet-0f553d9ba66f7b12d",
-  "subnet-03484282661aaf320"
+  "subnet-id",
+  "subnet-id",
+  "subnet-id"
 ]
 endpoint_private_access = true
 endpoint_public_access  = false
-eks_role_arn            = "arn:aws:iam::173031916021:role/hl-apigee-hybrid-non-prod-cluster-role"
+eks_role_arn            = "EKS_ARN"
 authentication_mode     = "API_AND_CONFIG_MAP"
 ip_family               = "ipv4"
 
 tags = {
   Project     = "Inspire"
-  Name        = "hl-apigee-hybrid-non-prod-cluster"
+  Name        = "NAME OF THE COMPANY"
   Environment = "Test"
-  Owner       = "Paras B"
+  Owner       = "NAME"
   Application = "VirtualOffice"
 }
 
@@ -38,7 +38,7 @@ coredns_version = "v1.19.2-eksbuild.5"
 
 ebscsidriver_name = "ebs-csi-driver"
 ebscsidriver_version     = "v1.39.0-eksbuild.1"
-ebscsidriver_role        = "arn:aws:iam::173031916021:role/hl-apigee-hybrid-non-prod-ebscsidriver-role"
+ebscsidriver_role        = "EBS_DRIVER_ARN"
 
 eks_pod_identity_name    = "eks-pod-identity"
 eks_pod_identity_version = "v1.3.4-eksbuild.1"
@@ -49,7 +49,7 @@ kube-proxy_version       = "v1.30.9-eksbuild.3"
 #nodepools
 runtime_node_group_name = "apigee-runtime"
 data_node_group_name    = "apigee-data"
-node_group_role         = "arn:aws:iam::173031916021:role/hl-apigee-hybrid-non-prod-ebscsidriver-role"
+node_group_role         = "NODE_GROUP_ARN"
 data_node_machine_type  = "t2.micro"
 data_node_disk_size     = "20"
 runtime_node_machine_type = "t2.micro"
